@@ -2,11 +2,11 @@
 from django.urls import path
 
 # Views
-from . import Views
+from . import views
 
 urlpatterns = [
     path(
-        route='login', 
+        route='login/', 
         view=views.login,
         name='name'
     ),
