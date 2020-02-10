@@ -1,3 +1,6 @@
+# Django
+from django.views.generic import ListView
 from django.shortcuts import render
 
-# Create your views here.
+class PostFeedView(ListView):
+    template_name = 'posts/feed.html'
