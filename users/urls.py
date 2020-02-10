@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     path(
         route='login/', 
-        view=views.login,
+        view=views.login_view,
         name='name'
     ),
 ]
