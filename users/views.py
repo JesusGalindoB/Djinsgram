@@ -1,18 +1,23 @@
 # Django
+from django.views.generic import FormView
+from django.contrib.auth import views as auth_views
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
-def login_view(request):
+# Forms
+from .forms import SignupForm
 
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            redirect('adposts')
-        else:
-            return render(request, 'users/login.html', {'error': 'Invalid username or password'})
+class LoginView(auth_views.LoginView):
+    template_name = 'users/login.html'
 
-    return render(request, 'users/login.html')
+class SignupView(FormView):
+    template_name = 'users/signup.html'
+    form_class = SignupForm
+    success_url = reverse_lazy('users:login')
+
+    def form_valid(self, form):
+        """Save form data"""
+        form.save()
+        return super().form_valid(form)
