@@ -23,5 +23,5 @@ class SignupView(FormView):
         form.save()
         return super().form_valid(form)
 
-class LogoutView(LoginRequiredMixin ,auth_views.LogoutView):
+class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     pass

@@ -7,7 +7,9 @@
         </a>
 
         <div class="navbar-brand pr-2">
-            <img src="{% static "img/instagram.png" %}" height="45" class="d-inline-block align-top"/>
+            <a href="{% url "posts:feed" %}">
+                <img src="{% static "img/instagram.png" %}" height="45" class="d-inline-block align-top"/>
+            </a>
         </div>
 
         <div class="collapse navbar-collapse">
