@@ -20,4 +20,9 @@ urlpatterns = [
         view=views.LogoutView.as_view(),
         name='logout'
     ),
+    path(
+        route='profile/edit/',
+        view=views.UpdateProfileView.as_view(),
+        name='update'
+    ),
 ]
