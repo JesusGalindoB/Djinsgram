@@ -1,8 +1,9 @@
 # Django
-from django.views.generic import FormView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.views.generic import FormView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
@@ -21,3 +22,6 @@ class SignupView(FormView):
         """Save form data"""
         form.save()
         return super().form_valid(form)
+
+class LogoutView(LoginRequiredMixin ,auth_views.LogoutView):
+    pass
