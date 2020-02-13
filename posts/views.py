@@ -1,6 +1,6 @@
 # Django
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 
@@ -27,3 +27,8 @@ class CreatePostView(LoginRequiredMixin ,CreateView):
         context['user'] = self.request.user
         context['profile'] = self.request.user.profile
         return context
+
+class PostDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'posts/detail.html'
+    model = Post
+    context_object_name = 'post'
